@@ -14,7 +14,7 @@ public class Command_uptodate extends BaseCommand
     public boolean run(final CommandSender sender, final Player sender_p, final Command cmd, final String commandLabel, final String[] args, final boolean senderIsConsole)
     {
         UpToDate.BuildProperties build = UpToDate.build;
-        sender.sendMessage(ChatColor.GOLD + "UpToDate is a plugin that allows you to easily update server plugins..");
+        sender.sendMessage(ChatColor.GOLD + "UpToDate is a plugin that allows you to easily update server plugins.");
         sender.sendMessage(ChatColor.GOLD + String.format("Version "
                         + ChatColor.BLUE + "%s Build %s " + ChatColor.GOLD + "("
                         + ChatColor.BLUE + "%s" + ChatColor.GOLD + ")",
