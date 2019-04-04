@@ -1,0 +1,13 @@
+name: ${project.name}
+version: ${project.version}
+description: Easily update server plugins.
+author: Jewish_Luigi
+main: me.telesphoreo.UpToDate
+api-version: 1.13
+commands:
+  uptodate:
+    usage: /<command>
+    description: Show information about UpToDate.
+  update:
+    usage: /<command>
+    description: Update server plugins.
