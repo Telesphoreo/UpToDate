@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class Command_uptodate extends BaseCommand
 {
     @Override
-    public boolean run(final CommandSender sender, final Player sender_p, final Command cmd, final String commandLabel, final String[] args, final boolean senderIsConsole)
+    public boolean run(final CommandSender sender, final Player playerSender, final Command cmd, final String commandLabel, final String[] args, final boolean senderIsConsole)
     {
         UpToDate.BuildProperties build = UpToDate.build;
         sender.sendMessage(ChatColor.GOLD + "UpToDate is a plugin that allows you to easily update server plugins.");

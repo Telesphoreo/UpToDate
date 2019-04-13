@@ -17,6 +17,7 @@ public class Command_update extends BaseCommand
 {
     public static final String[] FILES =
             {
+                    "https://telesphoreo.me/uptodate/Aero.jar",
                     "https://telesphoreo.me/uptodate/EssentialsX.jar",
                     "https://telesphoreo.me/uptodate/EssentialsXSpawn.jar",
                     "https://telesphoreo.me/uptodate/LibsDisguises.jar",
@@ -25,9 +26,9 @@ public class Command_update extends BaseCommand
             };
 
     @Override
-    public boolean run(final CommandSender sender, final Player sender_p, final Command cmd, final String commandLabel, final String[] args, final boolean senderIsConsole)
+    public boolean run(final CommandSender sender, final Player playerSender, final Command cmd, final String commandLabel, final String[] args, final boolean senderIsConsole)
     {
-        if (!TFMBridge.isAdmin(sender_p))
+        if (!TFMBridge.isAdmin(playerSender))
         {
             sender.sendMessage(Messages.MSG_NO_PERMS);
             return true;

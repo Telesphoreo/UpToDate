@@ -20,7 +20,7 @@ public abstract class BaseCommand
     {
     }
 
-    abstract public boolean run(final CommandSender sender, final Player sender_p, final Command cmd, final String commandLabel, final String[] args, final boolean senderIsConsole);
+    abstract public boolean run(final CommandSender sender, final Player playerSender, final Command cmd, final String commandLabel, final String[] args, final boolean senderIsConsole);
 
     public void setup(final UpToDate plugin, final CommandSender commandSender, final Class<?> commandClass)
     {

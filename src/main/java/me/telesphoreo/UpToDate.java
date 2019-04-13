@@ -9,7 +9,6 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.Properties;
 import me.telesphoreo.commands.CMD_Handler;
 import me.telesphoreo.commands.CMD_Loader;
-import me.telesphoreo.util.Config;
 import me.telesphoreo.util.NLog;
 import me.telesphoreo.util.Updater;
 import org.bstats.bukkit.Metrics;
@@ -43,7 +42,6 @@ public class UpToDate extends JavaPlugin
     {
         build.load(plugin);
         new Metrics(this);
-        Config.loadConfigs();
         new BukkitRunnable()
         {
             @Override
@@ -92,7 +90,6 @@ public class UpToDate extends JavaPlugin
     public static class BuildProperties
     {
         public String author;
-        public String codename;
         public String version;
         public String number;
         public String date;

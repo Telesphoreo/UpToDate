@@ -21,6 +21,7 @@ public class TFMBridge
 
         return tfm;
     }
+
     @SuppressWarnings("unchecked")
     public static boolean isAdmin(Player player)
     {
