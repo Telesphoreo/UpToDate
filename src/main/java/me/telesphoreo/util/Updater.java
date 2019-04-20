@@ -29,7 +29,7 @@ public class Updater
     {
         try
         {
-            String versionLink = "https://www.telesphoreo.me/uptodate/version.txt";
+            String versionLink = "https://updater.telesphoreo.me/version.txt";
             URL url = new URL(versionLink);
             URLConnection con = url.openConnection();
             InputStreamReader isr = new InputStreamReader(con.getInputStream());
@@ -57,7 +57,7 @@ public class Updater
 
             if (!newHead.equals(oldHead))
             {
-                String dlLink = "https://telesphoreo.me/uptodate/UpToDate.jar";
+                String dlLink = "https://updater.telesphoreo.me/UpToDate.jar";
                 url = new URL(dlLink);
                 con = url.openConnection();
                 InputStream in = con.getInputStream();
