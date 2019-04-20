@@ -17,12 +17,12 @@ public class Command_update extends BaseCommand
 {
     public static final String[] FILES =
             {
-                    "https://telesphoreo.me/uptodate/Aero.jar",
-                    "https://telesphoreo.me/uptodate/EssentialsX.jar",
-                    "https://telesphoreo.me/uptodate/EssentialsXSpawn.jar",
-                    "https://telesphoreo.me/uptodate/LibsDisguises.jar",
-                    "https://telesphoreo.me/uptodate/WorldEdit.jar",
-                    "https://telesphoreo.me/uptodate/WorldGuard.jar"
+                    "https://updater.telesphoreo.me/Aero.jar",
+                    "https://updater.telesphoreo.me/EssentialsX.jar",
+                    "https://updater.telesphoreo.me/EssentialsXSpawn.jar",
+                    "https://updater.telesphoreo.me/LibsDisguises.jar",
+                    "https://updater.telesphoreo.me/WorldEdit.jar",
+                    "https://updater.telesphoreo.me/WorldGuard.jar"
             };
 
     @Override
