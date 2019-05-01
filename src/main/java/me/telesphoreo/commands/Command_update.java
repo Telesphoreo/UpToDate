@@ -18,6 +18,7 @@ public class Command_update extends BaseCommand
     public static final String[] FILES =
             {
                     "https://updater.telesphoreo.me/Aero.jar",
+                    "https://updater.telesphoreo.me/Discord.jar",
                     "https://updater.telesphoreo.me/EssentialsX.jar",
                     "https://updater.telesphoreo.me/EssentialsXSpawn.jar",
                     "https://updater.telesphoreo.me/LibsDisguises.jar",
