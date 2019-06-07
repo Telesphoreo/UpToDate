@@ -7,29 +7,28 @@ import me.telesphoreo.util.NLog;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-@CommandPermissions(source = SourceType.BOTH)
-@CommandParameters(description = "Update server plugins.", usage = "/<command>")
-public class Command_update extends BaseCommand
+public class UpdateCommand implements CommandExecutor
 {
-    public static final String[] FILES =
+    private static final String[] FILES =
             {
-                    "https://updater.telesphoreo.me/Aero.jar",
-                    "https://updater.telesphoreo.me/Discord.jar",
-                    "https://updater.telesphoreo.me/EssentialsX.jar",
-                    "https://updater.telesphoreo.me/EssentialsXSpawn.jar",
-                    "https://updater.telesphoreo.me/LibsDisguises.jar",
-                    "https://updater.telesphoreo.me/WorldEdit.jar",
-                    "https://updater.telesphoreo.me/WorldGuard.jar"
+                    UpToDate.getPlugin("Aero"),
+                    UpToDate.getPlugin("BukkitTelnet"),
+                    UpToDate.getPlugin("Discord"),
+                    UpToDate.getPlugin("EssentialsX"),
+                    UpToDate.getPlugin("EssentialsXSpawn"),
+                    UpToDate.getPlugin("LibsDisguises"),
+                    UpToDate.getPlugin("WorldEdit"),
+                    UpToDate.getPlugin("WorldGuard"),
             };
 
     @Override
-    public boolean run(final CommandSender sender, final Player playerSender, final Command cmd, final String commandLabel, final String[] args, final boolean senderIsConsole)
+    public boolean onCommand(CommandSender sender, Command command, String s, String[] strings)
     {
-        if (!TFMBridge.isAdmin(playerSender))
+        if (!TFMBridge.isAdmin(Bukkit.getPlayer(sender.getName())))
         {
             sender.sendMessage(Messages.MSG_NO_PERMS);
             return true;
@@ -69,7 +68,7 @@ public class Command_update extends BaseCommand
                     NLog.severe(ex);
                 }
             }
-        }.runTaskAsynchronously(plugin);
+        }.runTaskAsynchronously(UpToDate.plugin);
         return true;
     }
 }

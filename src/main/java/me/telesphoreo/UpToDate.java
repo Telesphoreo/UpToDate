@@ -1,22 +1,21 @@
 package me.telesphoreo;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.Properties;
-import me.telesphoreo.commands.CMD_Handler;
-import me.telesphoreo.commands.CMD_Loader;
+import me.telesphoreo.commands.UpToDateCommand;
+import me.telesphoreo.commands.UpdateCommand;
 import me.telesphoreo.util.NLog;
 import me.telesphoreo.util.Updater;
 import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.Server;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class UpToDate extends JavaPlugin
 {
@@ -40,17 +39,9 @@ public class UpToDate extends JavaPlugin
     @Override
     public void onEnable()
     {
-        build.load(plugin);
+        build.load(this);
         new Metrics(this);
-        new BukkitRunnable()
-        {
-            @Override
-            public void run()
-            {
-                CMD_Loader.getCommandMap();
-                CMD_Loader.scan();
-            }
-        };
+        registerCommands();
     }
 
     @Override
@@ -67,24 +58,43 @@ public class UpToDate extends JavaPlugin
         }
     }
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
-    {
-        return CMD_Handler.handleCommand(sender, cmd, commandLabel, args);
-    }
-
     public static void downloadFile(String url, File output, boolean verbose) throws java.lang.Exception
     {
-        final URL website = new URL(url);
-        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-        FileOutputStream fos = new FileOutputStream(output);
-        fos.getChannel().transferFrom(rbc, 0, 1 << 24);
-        fos.close();
-
-        if (verbose)
+        try
         {
-            NLog.info("Downloaded " + url + " to " + output.toString() + ".");
+            final URL website = new URL(url);
+            ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+            FileOutputStream fos = new FileOutputStream(output);
+            fos.getChannel().transferFrom(rbc, 0, 1 << 24);
+            fos.close();
+
+            if (verbose)
+            {
+                NLog.info("Downloaded " + url + " to " + output.toString() + ".");
+            }
         }
+        catch (FileNotFoundException ex)
+        {
+            NLog.info(url + " does not exist.");
+        }
+
+    }
+
+    public static String getPlugin(String pluginName)
+    {
+        return "https://updater.telesphoreo.me/" + getNMSVersion() + "/" + pluginName + ".jar";
+        // Example: https://updater.telesphoreo.me/v1_14_R1/WorldEdit.jar"
+    }
+
+    public static String getNMSVersion()
+    {
+        return Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
+    }
+
+    public void registerCommands()
+    {
+        getCommand("update").setExecutor(new UpdateCommand());
+        getCommand("uptodate").setExecutor(new UpToDateCommand());
     }
 
     public static class BuildProperties
