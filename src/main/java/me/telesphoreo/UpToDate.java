@@ -28,12 +28,12 @@ public class UpToDate extends JavaPlugin
     @Override
     public void onLoad()
     {
-        UpToDate.plugin = this;
-        UpToDate.server = plugin.getServer();
+        plugin = this;
+        server = plugin.getServer();
         NLog.setPluginLogger(plugin.getLogger());
         NLog.setServerLogger(server.getLogger());
-        UpToDate.pluginName = plugin.getDescription().getName();
-        UpToDate.pluginVersion = plugin.getDescription().getVersion();
+        pluginName = plugin.getDescription().getName();
+        pluginVersion = plugin.getDescription().getVersion();
     }
 
     @Override
